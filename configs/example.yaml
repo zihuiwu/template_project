@@ -1,0 +1,25 @@
+exp_name: example
+experiment:
+  procedure: train_val_test
+  trainer:
+    max_epochs: 1000
+  early_stopping_patience: 10
+  optimizer_adam:
+    lr: 0.00001
+    weight_decay: 0.0005
+logger:
+  entity: zihuiwu
+  project: surf
+val_epoch_vis_freq: 2
+test_batch_vis_freq: 1000
+data:
+  _class_: FashionMNISTDataModule
+  shape: [32, 32]
+model:
+  _class_: CNNClassifier
+  channels: 16
+loss_fn:
+  _class_: CrossEntropy
+metric_fns:
+  metric0:
+    _class_: ClassificationAccuracy
